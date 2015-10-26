@@ -79,6 +79,11 @@ export default class PopoutWindow extends React.Component {
       container = win.document.createElement('div');
       container.id = divId;
       win.document.body.appendChild(container);
+      
+      if(this.props.onload) {
+        this.props.onload(win);
+      }      
+    
       ReactDOM.render(this.props.children, container);
       api.update = newComponent => {
         ReactDOM.render(newComponent, container);
